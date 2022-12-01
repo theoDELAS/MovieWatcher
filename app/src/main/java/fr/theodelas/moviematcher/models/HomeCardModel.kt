@@ -1,4 +1,4 @@
-package fr.theodelas.moviematcher.model
+package fr.theodelas.moviematcher.models
 
 import androidx.annotation.ColorInt
 
