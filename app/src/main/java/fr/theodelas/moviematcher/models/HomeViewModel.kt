@@ -1,4 +1,4 @@
-package fr.theodelas.moviematcher.model
+package fr.theodelas.moviematcher.models
 
 import android.graphics.Color
 import androidx.lifecycle.LiveData
@@ -11,7 +11,7 @@ class HomeViewModel: ViewModel() {
 
     val modelStream: LiveData<HomeModel>
         get() = stream
-
+    
     private val data = listOf(
         HomeCardModel(
             name = "Rodrigo Dominguez", age = 27, description = "Esto es una descripcion de ejemplo", backgroundColor = Color.parseColor("#c50e29")

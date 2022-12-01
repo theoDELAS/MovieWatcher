@@ -9,11 +9,10 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.TransitionAdapter
 import androidx.lifecycle.ViewModelProvider
 import fr.theodelas.moviematcher.R
-import fr.theodelas.moviematcher.model.HomeModel
-import fr.theodelas.moviematcher.model.HomeViewModel
+import fr.theodelas.moviematcher.models.HomeModel
+import fr.theodelas.moviematcher.models.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

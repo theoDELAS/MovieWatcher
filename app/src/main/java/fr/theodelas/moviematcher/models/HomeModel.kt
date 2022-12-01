@@ -1,4 +1,4 @@
-package fr.theodelas.moviematcher.model
+package fr.theodelas.moviematcher.models
 
 data class HomeModel(
     val cardTop: HomeCardModel,
