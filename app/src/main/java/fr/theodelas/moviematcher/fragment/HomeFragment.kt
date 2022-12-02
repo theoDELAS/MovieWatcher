@@ -13,6 +13,8 @@ import fr.theodelas.moviematcher.models.HomeModel
 import fr.theodelas.moviematcher.models.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import coil.load
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,9 +38,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.onViewCreated()
+        }
 
         viewModel
             .modelStream
@@ -69,10 +73,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindCard(model: HomeModel) {
-        containerCardOne.setBackgroundColor(model.cardTop.backgroundColor)
-        name.text = "${model.cardTop.name}, ${model.cardTop.age}"
-        description.text = model.cardTop.description
-        containerCardTwo.setBackgroundColor(model.cardBottom.backgroundColor)
+        name.text = model.cardTop?.title ?: ""
+        description.text = model.cardTop?.description ?: ""
+        imageView.load(model.cardTop?.imagePath ?: "https://via.placeholder.com/500") {
+            crossfade(true)
+        }
     }
 
     companion object {

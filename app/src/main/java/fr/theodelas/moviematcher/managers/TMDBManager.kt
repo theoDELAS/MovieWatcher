@@ -18,6 +18,8 @@ class APIClient {
 
     private val baseUrl = "https://api.themoviedb.org"
 
+    val baseImageUrl = "https://image.tmdb.org/t/p/w500"
+
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .client(OkHttpClient.Builder().build())
