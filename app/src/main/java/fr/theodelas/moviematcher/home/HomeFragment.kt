@@ -1,4 +1,4 @@
-package fr.theodelas.moviematcher.fragment
+package fr.theodelas.moviematcher.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +9,6 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.TransitionAdapter
 import androidx.lifecycle.ViewModelProvider
 import fr.theodelas.moviematcher.R
-import fr.theodelas.moviematcher.models.HomeModel
-import fr.theodelas.moviematcher.models.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -91,24 +89,16 @@ class HomeFragment : Fragment() {
             crossfade(true)
         }
     }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
+
+data class HomeModel(
+    val cardTop: HomeCardModel?,
+    val cardBottom: HomeCardModel?
+)
+
+data class HomeCardModel(
+    val title: String,
+    val description: String,
+    val releaseDate: String,
+    val imagePath: String
+)

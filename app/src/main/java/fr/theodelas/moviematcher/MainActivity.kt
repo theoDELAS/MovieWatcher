@@ -10,6 +10,7 @@ import kotlin.concurrent.schedule
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         Timer(false).schedule(2000) {

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="fr.theodelas.moviematcher.fragment.HomeFragment"
+        android:name="fr.theodelas.moviematcher.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favsFragment"
-        android:name="fr.theodelas.moviematcher.fragment.FavsFragment"
+        android:name="fr.theodelas.moviematcher.favs.FavoritesFragment"
         android:label="fragment_favs"
         tools:layout="@layout/fragment_favs" />
 </navigation>

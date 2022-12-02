@@ -1,4 +1,4 @@
-package fr.theodelas.moviematcher.models
+package fr.theodelas.moviematcher.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
@@ -27,8 +27,10 @@ class HomeViewModel: ViewModel() {
     }
 
     fun didLikeMovie() {
-        val currentCard = data[currentIndex]
-        StorageManager.default.addFavorite(currentCard)
+        if (data.isNotEmpty()) {
+            val currentCard = data[currentIndex]
+            StorageManager.default.addFavorite(currentCard)
+        }
     }
 
     private fun updateCards() {

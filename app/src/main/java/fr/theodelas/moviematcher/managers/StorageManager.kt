@@ -1,15 +1,11 @@
 package fr.theodelas.moviematcher.managers
 
-import fr.theodelas.moviematcher.models.HomeCardModel
+import fr.theodelas.moviematcher.home.HomeCardModel
 
 class StorageManager {
 
     companion object {
-        lateinit var default: StorageManager
-    }
-
-    init {
-        default = this
+        val default = StorageManager()
     }
 
     var favoriteCards = mutableListOf<HomeCardModel>()
