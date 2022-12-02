@@ -6,9 +6,8 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.lifecycle.lifecycleScope
 import fr.theodelas.moviematcher.R
-import fr.theodelas.moviematcher.managers.APIClient
+
 
 
 class HomeActivity : AppCompatActivity() {
@@ -19,11 +18,5 @@ class HomeActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.nav_fragment)
         bottomNavigationView.setupWithNavController(navController)
-        val service = APIClient()
-
-        lifecycleScope.launchWhenCreated {
-            println(service.getPopularMovies())
-        }
-
     }
 }

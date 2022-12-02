@@ -13,6 +13,8 @@ import fr.theodelas.moviematcher.models.HomeModel
 import fr.theodelas.moviematcher.models.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import coil.load
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,9 +38,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.onViewCreated()
+        }
 
         viewModel
             .modelStream
@@ -48,6 +52,12 @@ class HomeFragment : Fragment() {
 
         motionLayout.setTransitionListener(object : TransitionAdapter() {
             override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
+                when (currentId) {
+                    R.id.offScreenLike -> {
+                        viewModel.didLikeMovie()
+                    }
+                }
+
                 when (currentId) {
                     R.id.offScreenUnlike,
                     R.id.offScreenLike -> {
@@ -61,6 +71,7 @@ class HomeFragment : Fragment() {
 
         likeFloating.setOnClickListener {
             motionLayout.transitionToState(R.id.like)
+            viewModel.didLikeMovie()
         }
 
         unlikeFloating.setOnClickListener {
@@ -69,10 +80,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindCard(model: HomeModel) {
-        containerCardOne.setBackgroundColor(model.cardTop.backgroundColor)
-        name.text = "${model.cardTop.name}, ${model.cardTop.age}"
-        description.text = model.cardTop.description
-        containerCardTwo.setBackgroundColor(model.cardBottom.backgroundColor)
+        model.cardTop?.title.let {
+            name.text = it
+        }
+        model.cardTop?.description.let {
+            description.text = it
+        }
+
+        imageView.load(model.cardTop?.imagePath ?: "https://via.placeholder.com/500") {
+            crossfade(true)
+        }
     }
 
     companion object {

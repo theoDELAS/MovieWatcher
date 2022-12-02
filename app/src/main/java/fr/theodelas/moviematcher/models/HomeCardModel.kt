@@ -1,10 +1,8 @@
 package fr.theodelas.moviematcher.models
 
-import androidx.annotation.ColorInt
-
 data class HomeCardModel(
-    val name: String,
-    val age: Int,
+    val title: String,
     val description: String,
-    @ColorInt val backgroundColor: Int
+    val releaseDate: String,
+    val imagePath: String
 )

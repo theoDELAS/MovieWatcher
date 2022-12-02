@@ -11,5 +11,6 @@ data class FetchedMoviesDTO(
 data class FetchedMovieDTO(
     val title: String,
     var overview: String,
-    val release_date: String
+    val release_date: String,
+    val poster_path: String
 )
