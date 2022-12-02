@@ -14,6 +14,7 @@ interface TMDBService {
     suspend fun getPopularMovies(): FetchedMoviesDTO?
 }
 
+
 class APIClient {
 
     private val baseUrl = "https://api.themoviedb.org"

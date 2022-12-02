@@ -3,6 +3,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
 import fr.theodelas.moviematcher.managers.APIClient
+import fr.theodelas.moviematcher.managers.StorageManager
 
 
 class HomeViewModel: ViewModel() {
@@ -23,6 +24,11 @@ class HomeViewModel: ViewModel() {
     fun swipe() {
         currentIndex += 1
         updateCards()
+    }
+
+    fun didLikeMovie() {
+        val currentCard = data[currentIndex]
+        StorageManager.default.addFavorite(currentCard)
     }
 
     private fun updateCards() {

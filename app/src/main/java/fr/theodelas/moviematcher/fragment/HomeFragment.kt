@@ -53,6 +53,12 @@ class HomeFragment : Fragment() {
         motionLayout.setTransitionListener(object : TransitionAdapter() {
             override fun onTransitionCompleted(motionLayout: MotionLayout, currentId: Int) {
                 when (currentId) {
+                    R.id.offScreenLike -> {
+                        viewModel.didLikeMovie()
+                    }
+                }
+
+                when (currentId) {
                     R.id.offScreenUnlike,
                     R.id.offScreenLike -> {
                         motionLayout.progress = 0f
@@ -65,6 +71,7 @@ class HomeFragment : Fragment() {
 
         likeFloating.setOnClickListener {
             motionLayout.transitionToState(R.id.like)
+            viewModel.didLikeMovie()
         }
 
         unlikeFloating.setOnClickListener {
@@ -73,8 +80,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindCard(model: HomeModel) {
-        name.text = model.cardTop?.title ?: ""
-        description.text = model.cardTop?.description ?: ""
+        model.cardTop?.title.let {
+            name.text = it
+        }
+        model.cardTop?.description.let {
+            description.text = it
+        }
+
         imageView.load(model.cardTop?.imagePath ?: "https://via.placeholder.com/500") {
             crossfade(true)
         }
