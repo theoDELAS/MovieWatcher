@@ -69,7 +69,6 @@ class HomeFragment : Fragment() {
 
         likeFloating.setOnClickListener {
             motionLayout.transitionToState(R.id.like)
-            viewModel.didLikeMovie()
         }
 
         unlikeFloating.setOnClickListener {
